@@ -64,3 +64,113 @@ body > .container {
     font-weight: 700;
     border-radius: 10px;
 }
+
+/* HEADER */
+
+.container > .header {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 30px;
+}
+
+.header > .header-left-area {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 800px;
+}
+
+.header > .header-left-area > .header-title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.header > .header-left-area > #search-book {
+    height: 40px;
+    width: 400px;
+    font-family: "Poppins", sans-serif;
+    padding: 5px 20px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
+.header > .header-right-area {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    gap: 30px;
+    align-content: center;
+    align-items: center;
+    /* width: 200px; */
+}
+
+.header-right-area > .profile-picture-wrapper {
+    width: 50px;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.header-right-area > .profile-picture-wrapper > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-right-area > .profile-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* MAIN CONTENT */
+
+.container > .main-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.main-content > .content-area {
+    padding: 30px;
+}
+
+.content-area > .content-area-latest-book {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.content-area > .book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-auto-rows: 300px; */
+    gap: 30px;
+}
+
+.book-list > .book-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.book-card > .book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-card > .book-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+    background-color: rgba(00 00 00 / 30%);
+    padding: 10px;
+    backdrop-filter: blur(1px);
+    /* background-color: #00000020; */
+}
