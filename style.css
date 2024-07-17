@@ -155,6 +155,7 @@ body > .container {
 .book-list > .book-card {
     position: relative;
     border-radius: 10px;
+    aspect-ratio: 2 / 3;
     overflow: hidden;
 }
 
@@ -173,4 +174,84 @@ body > .container {
     padding: 10px;
     backdrop-filter: blur(1px);
     /* background-color: #00000020; */
+}
+
+/* RIGHT SIDEBAR */
+
+.right-sidebar-container {
+    display: grid;
+    align-content: start;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+
+.right-sidebar-container > .right-sidebar-top {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    justify-content: start;
+    gap: 20px;
+}
+
+.right-sidebar-top > .main-book-cover {
+    width: 200px;
+    aspect-ratio: 2 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-book-cover > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.right-sidebar-top > .book-details-wrapper {
+    display: grid;
+    align-content: space-between;
+}
+
+.book-details-wrapper > .book-details {
+    display: grid;
+    align-content: start;
+    gap: 5px;
+}
+
+.book-details > .book-details-title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.book-details > :not(.book-details-title) {
+    font-size: 14px;
+    font-weight: 500;
+}
+.book-details > :not(.book-details-title) > span {
+    font-weight: 400;
+}
+
+.book-details-wrapper > .book-action-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, min(150px, 200px));
+    gap: 20px;
+}
+
+.book-action-wrapper > .book-action-button {
+    display: grid;
+    place-content: center;
+    font-weight: 500;
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.right-sidebar-bottom {
+
+}
+
+.right-sidebar-bottom > .book-overview-title {
+    font-size: 24px;
+    font-weight: 500;
 }
