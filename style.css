@@ -12,6 +12,7 @@ body > .container {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
+    position: relative;
     width: 100vw;
     height: 100vh;
 }
@@ -176,6 +177,24 @@ body > .container {
     /* background-color: #00000020; */
 }
 
+.book-card > .book-read-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    background-color: rgba(00 00 00 / 30%);
+    width: 50px;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+}
+
+.book-card > .book-read-status.read {
+    background-color: #0ea5e9;
+}
+
 /* RIGHT SIDEBAR */
 
 .right-sidebar-container {
@@ -247,11 +266,100 @@ body > .container {
     border-radius: 10px;
 }
 
-.right-sidebar-bottom {
-
-}
-
 .right-sidebar-bottom > .book-overview-title {
     font-size: 24px;
     font-weight: 500;
+}
+
+
+/* ADD NEW BOOK POPUP MODAL */
+
+.container > .add-book-modal {
+    --modal-width: 400px;
+    --modal-height: 600px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    position: absolute;
+    top: calc(50% - (var(--modal-height) / 2));
+    left: calc(50% - (var(--modal-width) / 2));
+    width: var(--modal-width);
+    height: var(--modal-height);
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(00 00 00 / 20%);
+    transition: 1s all ease-in-out;
+}
+
+
+.add-book-modal > .modal-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.add-book-modal .add-book-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.add-book-form-wrapper > .form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row > label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-row > :is(input[type="text"], #book-description) {
+    font-family: Poppins, sans-serif;
+}
+
+.form-row > input[type="text"] {
+    height: 40px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid grey;
+}
+
+.form-row > #book-description {
+    height: 5lh;
+    padding: 5px 20px;
+    resize: none;
+    border: 2px solid grey;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-row.read-status-check {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+.buttons-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+.buttons-wrapper > button {
+    flex: 1;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
 }
