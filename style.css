@@ -292,6 +292,10 @@ body > .container {
     transition: 1s all ease-in-out;
 }
 
+.container > .add-book-modal.hidden {
+    display: none;
+}
+
 
 .add-book-modal > .modal-close-button {
     display: flex;
@@ -330,8 +334,8 @@ body > .container {
     height: 40px;
     padding: 5px 20px;
     border-radius: 5px;
-    outline: none;
     border: 2px solid grey;
+    outline: none;
 }
 
 .form-row > #book-description {
@@ -349,6 +353,21 @@ body > .container {
     gap: 10px;
 }
 
+
+#book-isbn:focus:invalid {
+    border-color: red;
+}
+
+#book-isbn + div {
+    position: relative;
+}
+
+#book-isbn:focus:invalid +div::after {
+    position: absolute;
+    content: "ISBN number should be 5 digit number";
+    font-size: 12px;
+    color: red;
+}
 
 .buttons-wrapper {
     display: flex;

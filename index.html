@@ -129,12 +129,12 @@
                 </div>
             </div>
 
-            <div class="add-book-modal">
+            <div class="add-book-modal hidden">
                 <div class="modal-close-button">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </div>
                 <h3>Add new book to library</h3>
-                <form>
+                <form class="add-book-form">
                     <div class="add-book-form-wrapper">
                         <div class="form-row">
                             <label for="book-title">Title</label>
@@ -151,6 +151,7 @@
                         <div class="form-row">
                             <label for="book-isbn">ISBN number</label>
                             <input type="text" id="book-isbn" name="book-isbn" placeholder="ISBN number" pattern="[0-9]{5}" required/>
+                            <div></div>
                         </div>
                         <div class="form-row">
                             <label for="book-description">Book description</label>
@@ -167,7 +168,7 @@
                         </div>
                         <div class="buttons-wrapper">
                             <button type="button" class="cancel-add-book">cancel</button>
-                            <button type="button" class="submit-add-book">Add book</button>
+                            <button type="submit" class="submit-add-book">Add book</button>
                         </div>
                     </div>
                 </form>
