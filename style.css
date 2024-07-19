@@ -296,7 +296,7 @@ body > .container {
 
 .container > .add-book-modal {
     --modal-width: 400px;
-    --modal-height: 600px;
+    --modal-height: 680px;
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 20px;
@@ -346,11 +346,11 @@ body > .container {
     font-weight: 500;
 }
 
-.form-row > :is(input[type="text"], #book-description) {
+.form-row > :is(input[type="text"], input[type="number"], #book-description) {
     font-family: Poppins, sans-serif;
 }
 
-.form-row > input[type="text"] {
+.form-row > :is(input[type="text"], input[type="number"]) {
     height: 40px;
     padding: 5px 20px;
     border-radius: 5px;
@@ -370,6 +370,7 @@ body > .container {
 .form-row.read-status-check {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 10px;
 }
 
