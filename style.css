@@ -133,7 +133,8 @@ body > .container {
 .container > .main-content {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1.5fr 1fr;
+    /* grid-template-columns: 1.5fr 1fr; */
+    grid-template-columns: 1fr auto;
 }
 
 .main-content > .content-area {
@@ -216,6 +217,16 @@ body > .container {
 }
 
 /* RIGHT SIDEBAR */
+
+.content-right-sidebar {
+    width: 600px;
+    transition: all 0.3s ease-in-out;
+}
+
+.content-right-sidebar.hidden {
+    width: 0;
+    overflow:hidden;
+}
 
 .right-sidebar-container {
     display: grid;
