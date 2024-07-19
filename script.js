@@ -53,14 +53,15 @@ submitAddBookButton.addEventListener("click", event => {
 
 
 bookList.addEventListener("click", event => {
+    if (event.target.closest(".book-read-status") !== null) {
+        console.log("toggle read status pressed");
+        const bookElement = event.target.closest(".book-card");
+        toggleReadStatus(findBookObj(bookElement), bookElement);
+    }
     if (event.target.closest(".book-remove-button") !== null) {
         console.log("book-remove-button pressed");
         const bookElement = event.target.closest(".book-card");
-        removeBookElement(
-            library.find(bookObj => {
-                return bookObj.title === bookElement.querySelector(".book-title").textContent
-                && bookObj.author === bookElement.querySelector(".book-author").textContent})
-        )
+        removeBookElement(findBookObj(bookElement));
     }
 })
 
@@ -92,4 +93,21 @@ function removeBookElement(book) {
             library.splice(library.indexOf(book), 1);
         }
     }
+}
+
+function toggleReadStatus(book, bookElement) {
+    if (book.readStatus === "true") {
+        book.readStatus = "false";
+        bookElement.querySelector(".book-read-status").classList.toggle("read");
+    } else {
+        book.readStatus = "true";
+        bookElement.querySelector(".book-read-status").classList.toggle("read");
+    }
+}
+
+function findBookObj(bookElement) {
+    return library.find( bookObj => {
+        return bookElement.querySelector(".book-title").textContent === bookObj.title
+        && bookElement.querySelector(".book-author").textContent === bookObj.author
+    });
 }
