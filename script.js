@@ -1,5 +1,6 @@
 const modal = document.querySelector(".add-book-modal");
 const form = document.querySelector(".add-book-form");
+const bookList = document.querySelector(".book-list");
 const library = [];
 
 function Book(title, author, language, ISBNNumber, description, readStatus) {
@@ -41,11 +42,25 @@ submitAddBookButton.addEventListener("click", event => {
         const formData = new FormData(form);
         const book = new Book(...formData.values());
         library.push(book);
+        addBookElement(book);
         resetForm();
         toggleModal();
     } else {
         console.log("form is invalid");
         form.reportValidity();
+    }
+})
+
+
+bookList.addEventListener("click", event => {
+    if (event.target.closest(".book-remove-button") !== null) {
+        console.log("book-remove-button pressed");
+        const bookElement = event.target.closest(".book-card");
+        removeBookElement(
+            library.find(bookObj => {
+                return bookObj.title === bookElement.querySelector(".book-title").textContent
+                && bookObj.author === bookElement.querySelector(".book-author").textContent})
+        )
     }
 })
 
@@ -56,4 +71,25 @@ function resetForm() {
 
 function toggleModal() {
     modal.classList.toggle("hidden");
+}
+
+function addBookElement(book) {
+    const newBook = document.querySelector(".book-template").cloneNode(true);
+    newBook.classList.remove("hidden");
+    newBook.classList.remove("book-template");
+    newBook.classList.add(`book-${library.length}`);
+    newBook.querySelector(".book-title").textContent = book.title;
+    newBook.querySelector(".book-author").textContent = book.author;
+    if (book.readStatus === "true") newBook.querySelector(".book-read-status").classList.add("read");
+    bookList.appendChild(newBook);
+}
+
+function removeBookElement(book) {
+    const listTitleAuthor = [...bookList.querySelectorAll(".book-title, .book-author")];
+    for (let i = 0; i < listTitleAuthor.length; i+=2) {
+        if (listTitleAuthor[i].textContent === book.title && listTitleAuthor[i+1].textContent === book.author) {
+            listTitleAuthor[i].closest(".book-card").remove();
+            library.splice(library.indexOf(book), 1);
+        }
+    }
 }
