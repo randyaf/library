@@ -74,6 +74,7 @@ bookList.addEventListener("click", event => {
             if (library.some(bookObj => bookObj.selectStatus === true)) resetSelectStatus();
             bookElement.classList.add("selected");
             bookObj.selectStatus = true;
+            updateRightSidebarContent(bookObj);
         }
         console.log("book card clicked");
     }
@@ -142,4 +143,15 @@ function resetSelectStatus() {
     findBookElement(selectedBook).classList.remove("selected");
     selectedBook.selectStatus = false;
     console.log("selection is reset");
+}
+
+function updateRightSidebarContent(book) {
+    const rightSidebar = document.querySelector(".content-right-sidebar");
+    if (rightSidebar.classList.contains("hidden")) rightSidebar.classList.remove("hidden");
+    rightSidebar.querySelector(".book-details-title").textContent = book.title;
+    rightSidebar.querySelector(".book-author-value").textContent = book.author;
+    rightSidebar.querySelector(".book-language-value").textContent = book.language;
+    rightSidebar.querySelector(".book-pages-value").textContent = book.bookPages;
+    rightSidebar.querySelector(".book-isbn-value").textContent = book.ISBNNumber;
+    rightSidebar.querySelector(".book-overview").textContent = book.description;
 }
