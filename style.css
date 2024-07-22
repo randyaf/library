@@ -243,6 +243,14 @@ body > .container {
     padding: 30px;
 }
 
+.right-sidebar-container > .right-sidebar-close {
+    justify-self: start;
+    background-color: #0ea5e9;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 .right-sidebar-container > .right-sidebar-top {
     display: grid;
     grid-auto-flow: column;

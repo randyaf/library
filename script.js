@@ -64,6 +64,8 @@ bookList.addEventListener("click", event => {
         console.log("book-remove-button pressed");
         const bookElement = event.target.closest(".book-card");
         removeBookElement(findBookObj(bookElement));
+        resetSelectStatus();
+        closeRightSidebar();
     }
     if (event.target.closest(".book-card") !== null
     && !event.target.closest(".book-read-status")
@@ -78,6 +80,12 @@ bookList.addEventListener("click", event => {
         }
         console.log("book card clicked");
     }
+})
+
+const rightSidebarCloseButton = document.querySelector(".right-sidebar-close");
+rightSidebarCloseButton.addEventListener("click", event => {
+    resetSelectStatus();
+    closeRightSidebar();
 })
 
 
@@ -154,4 +162,8 @@ function updateRightSidebarContent(book) {
     rightSidebar.querySelector(".book-pages-value").textContent = book.bookPages;
     rightSidebar.querySelector(".book-isbn-value").textContent = book.ISBNNumber;
     rightSidebar.querySelector(".book-overview").textContent = book.description;
+}
+
+function closeRightSidebar() {
+    document.querySelector(".content-right-sidebar").classList.add("hidden");   
 }
