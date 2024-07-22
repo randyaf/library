@@ -163,6 +163,12 @@ body > .container {
     border-radius: 10px;
     aspect-ratio: 2 / 3;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.book-list > .book-card.selected {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(00 00 00 / 20%);
 }
 
 .book-card > .book-cover {

@@ -11,6 +11,7 @@ function Book(title, author, language, bookPages, ISBNNumber, description, readS
     this.ISBNNumber = ISBNNumber;
     this.description = description;
     this.readStatus = readStatus;
+    this.selectStatus = false;
 }
 
 const addBookButton = document.querySelector(".add-book-button");
@@ -64,6 +65,18 @@ bookList.addEventListener("click", event => {
         const bookElement = event.target.closest(".book-card");
         removeBookElement(findBookObj(bookElement));
     }
+    if (event.target.closest(".book-card") !== null
+    && !event.target.closest(".book-read-status")
+    && !event.target.closest(".book-remove-button")) {
+        const bookElement = event.target.closest(".book-card");
+        const bookObj = findBookObj(bookElement);
+        if (bookObj.selectStatus === false) {
+            if (library.some(bookObj => bookObj.selectStatus === true)) resetSelectStatus();
+            bookElement.classList.add("selected");
+            bookObj.selectStatus = true;
+        }
+        console.log("book card clicked");
+    }
 })
 
 
@@ -111,4 +124,22 @@ function findBookObj(bookElement) {
         return bookElement.querySelector(".book-title").textContent === bookObj.title
         && bookElement.querySelector(".book-author").textContent === bookObj.author
     });
+}
+
+function findBookElement(book) {
+    const listTitleAuthor = [...bookList.querySelectorAll(".book-title, .book-author")];
+    for (let i = 0; i < listTitleAuthor.length; i+=2) {
+        if (listTitleAuthor[i].textContent === book.title && listTitleAuthor[i+1].textContent === book.author) {
+            return listTitleAuthor[i].closest(".book-card");
+        }
+    }
+    return null;
+}
+
+function resetSelectStatus() {
+    const selectedBook = library.find(object => object.selectStatus === true);
+    console.log(selectedBook);
+    findBookElement(selectedBook).classList.remove("selected");
+    selectedBook.selectStatus = false;
+    console.log("selection is reset");
 }
