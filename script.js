@@ -175,3 +175,15 @@ function closeRightSidebar() {
 function getRandomCover() {
     return `./images/book-${Math.floor(Math.random() * 6) + 1}.jpg`
 }
+
+function addDummyBook(number) {
+    if (number <= 0) return;
+    let i = 1 + library.length;
+    let length = number+library.length;
+    for (i; i <= length; i++) {
+        const book = new Book(`book ${i}`, "cool author", "english", 123, 212, "some random description here", "false");
+        library.push(book);
+        addBookElement(book);
+    }
+}
+addDummyBook(8);
