@@ -88,6 +88,12 @@ rightSidebarCloseButton.addEventListener("click", event => {
     closeRightSidebar();
 })
 
+const rightSidebarRemoveBookButton = document.querySelector(".remove-book");
+rightSidebarRemoveBookButton.addEventListener("click", event => {
+    removeBookElement(library.find(bookObj => bookObj.selectStatus === true));
+    resetSelectStatus();
+    closeRightSidebar();
+})
 
 function resetForm() {
     form.reset();
