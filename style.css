@@ -149,7 +149,7 @@ body > .container {
 
 .content-area > .book-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, 200px);
     /* grid-auto-rows: 300px; */
     gap: 30px;
 }
