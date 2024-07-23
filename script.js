@@ -104,6 +104,7 @@ function addBookElement(book) {
     newBook.classList.add(`book-${library.length}`);
     newBook.querySelector(".book-title").textContent = book.title;
     newBook.querySelector(".book-author").textContent = book.author;
+    newBook.querySelector(".book-cover").setAttribute("src", getRandomCover());
     if (book.readStatus === "true") newBook.querySelector(".book-read-status").classList.add("read");
     bookList.appendChild(newBook);
 }
@@ -157,6 +158,7 @@ function resetSelectStatus() {
 function updateRightSidebarContent(book) {
     const rightSidebar = document.querySelector(".content-right-sidebar");
     if (rightSidebar.classList.contains("hidden")) rightSidebar.classList.remove("hidden");
+    rightSidebar.querySelector(".main-book-cover > img").setAttribute("src", findBookElement(book).querySelector(".book-cover").getAttribute("src"));
     rightSidebar.querySelector(".book-details-title").textContent = book.title;
     rightSidebar.querySelector(".book-author-value").textContent = book.author;
     rightSidebar.querySelector(".book-language-value").textContent = book.language;
@@ -168,4 +170,8 @@ function updateRightSidebarContent(book) {
 function closeRightSidebar() {
     document.querySelector(".content-right-sidebar").classList.add("hidden");   
     console.log("right sidebar closed");
+}
+
+function getRandomCover() {
+    return `./images/book-${Math.floor(Math.random() * 6) + 1}.jpg`
 }
