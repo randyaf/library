@@ -73,7 +73,7 @@ bookList.addEventListener("click", event => {
         const bookElement = event.target.closest(".book-card");
         const bookObj = findBookObj(bookElement);
         if (bookObj.selectStatus === false) {
-            if (library.some(bookObj => bookObj.selectStatus === true)) resetSelectStatus();
+            resetSelectStatus();
             bookElement.classList.add("selected");
             bookObj.selectStatus = true;
             updateRightSidebarContent(bookObj);
@@ -146,6 +146,7 @@ function findBookElement(book) {
 }
 
 function resetSelectStatus() {
+    if (!library.some(bookObj => bookObj.selectStatus === true)) return;
     const selectedBook = library.find(object => object.selectStatus === true);
     console.log(selectedBook);
     findBookElement(selectedBook).classList.remove("selected");
@@ -166,4 +167,5 @@ function updateRightSidebarContent(book) {
 
 function closeRightSidebar() {
     document.querySelector(".content-right-sidebar").classList.add("hidden");   
+    console.log("right sidebar closed");
 }
