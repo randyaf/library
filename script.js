@@ -3,15 +3,17 @@ const form = document.querySelector(".add-book-form");
 const bookList = document.querySelector(".book-list");
 const library = [];
 
-function Book(title, author, language, bookPages, ISBNNumber, description, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.language = language;
-    this.bookPages = bookPages;
-    this.ISBNNumber = ISBNNumber;
-    this.description = description;
-    this.readStatus = readStatus;
-    this.selectStatus = false;
+class Book {
+    constructor(title, author, language, bookPages, ISBNNumber, description, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.language = language;
+        this.bookPages = bookPages;
+        this.ISBNNumber = ISBNNumber;
+        this.description = description;
+        this.readStatus = readStatus;
+        this.selectStatus = false;
+    }
 }
 
 const addBookButton = document.querySelector(".add-book-button");
